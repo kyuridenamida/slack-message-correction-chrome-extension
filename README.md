@@ -1,3 +1,6 @@
+# 免責
+このリポジトリは公開されていますが、これはAIによって書かれており、私用の範囲を超えてメンテするつもりはありません。
+
 # Slack Message Correction Extension
 
 Slackメッセージ送信前にAI校正を行うChrome拡張機能です。Claude APIを使用してネイティブレベルの自然な校正を提供します。
