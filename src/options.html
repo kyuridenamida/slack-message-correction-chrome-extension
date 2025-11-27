@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Slack Message Correction - 設定</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      color: #333;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 10px;
+    }
+    
+    .section {
+      margin: 20px 0;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+    
+    input[type="password"], input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    
+    button:hover {
+      background: #45a049;
+    }
+    
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .help {
+      background: #e3f2fd;
+      border: 1px solid #bbdefb;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+    
+    .help h3 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+    
+    .help a {
+      color: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 Slack Message Correction 設定</h1>
+    
+    <div class="section">
+      <label for="apiKey">Claude APIキー:</label>
+      <input type="password" id="apiKey" placeholder="sk-ant-..." />
+      <div class="status" id="status"></div>
+    </div>
+    
+    <div class="section">
+      <button id="save">設定を保存</button>
+      <button id="test">接続テスト</button>
+    </div>
+    
+    <div class="help">
+      <h3>📝 設定方法</h3>
+      <ol>
+        <li><a href="https://console.anthropic.com/" target="_blank">Anthropic Console</a>でアカウントを作成</li>
+        <li>APIキーを生成（課金設定が必要な場合があります）</li>
+        <li>上記フィールドにAPIキーを入力して保存</li>
+        <li>「接続テスト」で正常に動作するか確認</li>
+      </ol>
+      
+      <p><strong>注意:</strong> APIキーは安全に保存され、Claude APIとの通信のみに使用されます。</p>
+    </div>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

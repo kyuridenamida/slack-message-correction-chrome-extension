@@ -1,0 +1,458 @@
+.slack-corrector-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Slack-Lato, appleLogo, sans-serif;
+}
+
+.dialog-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e1e5e9;
+}
+
+.dialog-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1d1c1d;
+}
+
+.close-dialog {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #616061;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-dialog:hover {
+  color: #1d1c1d;
+}
+
+.dialog-body {
+  padding: 16px 24px;
+}
+
+.correction-score {
+  background: #fff2cd;
+  border: 1px solid #e7b13b;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: #856404;
+  text-align: center;
+}
+
+.issues-section {
+  margin-bottom: 20px;
+}
+
+.issues-section h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1c1d;
+}
+
+.issues-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.issues-list li {
+  padding: 4px 0;
+  font-size: 13px;
+  position: relative;
+}
+
+.issues-list li::before {
+  content: "•";
+  position: absolute;
+  left: -12px;
+  font-weight: bold;
+}
+
+.issue-typo::before {
+  color: #e01e5a;
+}
+
+.issue-tone::before {
+  color: #ecb22e;
+}
+
+.issue-politeness::before {
+  color: #36c5f0;
+}
+
+.issue-grammar::before {
+  color: #2eb67d;
+}
+
+.issue-style::before {
+  color: #e60049;
+}
+
+.issue-reason {
+  color: #666;
+  font-style: italic;
+}
+
+.issue-severity {
+  color: #888;
+  font-weight: normal;
+}
+
+.issues-filter-note {
+  font-size: 11px;
+  color: #666;
+  margin: 4px 0 8px 0;
+  font-style: italic;
+}
+
+.no-significant-issues {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.text-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.original-text,
+.corrected-text {
+  flex: 1;
+}
+
+.original-text h4,
+.corrected-text h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1c1d;
+}
+
+.text-content {
+  background: #f8f8f8;
+  border: 1px solid #e1e5e9;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 60px;
+  white-space: pre-wrap;
+}
+
+.corrected-text .text-content {
+  background: #f0f8ff;
+  border-color: #0084ff;
+}
+
+.dialog-footer {
+  padding: 16px 24px 20px;
+  border-top: 1px solid #e1e5e9;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.send-original,
+.send-corrected {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid;
+  transition: all 0.2s ease;
+}
+
+.send-original {
+  background: white;
+  color: #616061;
+  border-color: #e1e5e9;
+}
+
+.send-original:hover {
+  background: #f8f8f8;
+  border-color: #616061;
+}
+
+.send-corrected {
+  background: #007a5a;
+  color: white;
+  border-color: #007a5a;
+}
+
+.send-corrected:hover {
+  background: #006644;
+  border-color: #006644;
+}
+
+/* 新しいUI要素のスタイル */
+.edit-section {
+  margin: 16px 0;
+}
+
+.target-text {
+  margin-bottom: 16px;
+}
+
+.target-text .text-content.target {
+  background: #e8f4fd;
+  border-color: #1d9bf0;
+  font-weight: 500;
+}
+
+.user-edit {
+  margin-bottom: 16px;
+}
+
+.user-edit-area {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.user-edit-area:focus {
+  outline: none;
+  border-color: #1d9bf0;
+  box-shadow: 0 0 0 1px #1d9bf0;
+}
+
+.diff-section {
+  margin-bottom: 16px;
+}
+
+.diff-help {
+  font-size: 12px;
+  color: #666;
+  margin: 4px 0 8px 0;
+  font-style: italic;
+}
+
+.diff-display {
+  background: #f8f8f8;
+  border: 1px solid #e1e5e9;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 40px;
+  font-family: monospace;
+}
+
+/* 差分ハイライトスタイル */
+.diff-wrong {
+  background-color: #ffeaa7;
+  color: #d63031;
+  font-weight: bold;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.diff-extra {
+  background-color: #fab1a0;
+  color: #e17055;
+  font-weight: bold;
+  text-decoration: line-through;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.diff-missing {
+  background-color: #a29bfe;
+  color: #6c5ce7;
+  font-weight: bold;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.diff-perfect {
+  color: #00b894;
+  font-weight: bold;
+}
+
+.diff-empty {
+  color: #636e72;
+  font-style: italic;
+}
+
+/* 送信ボタンの状態別スタイル */
+.send-corrected.enabled {
+  background: #00b894;
+  border-color: #00b894;
+  color: white;
+}
+
+.send-corrected.enabled:hover {
+  background: #00a085;
+  border-color: #00a085;
+}
+
+.send-corrected:disabled {
+  background: #ddd;
+  border-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.send-corrected:disabled:hover {
+  background: #ddd;
+  border-color: #ddd;
+}
+
+/* AI校正中インジケーター */
+.ai-correction-indicator {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: #1a73e8;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+  z-index: 1000;
+  animation: slideInDown 0.3s ease-out;
+}
+
+.ai-correction-indicator .spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.ai-correction-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 115, 232, 0.05);
+  border: 2px solid #1a73e8;
+  border-radius: 6px;
+  pointer-events: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+/* 送信ボタンのローディング状態 */
+.send-button-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.send-button-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .dialog-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .text-comparison {
+    flex-direction: column;
+  }
+  
+  .dialog-footer {
+    flex-direction: column;
+  }
+  
+  .send-original,
+  .send-corrected {
+    width: 100%;
+  }
+  
+  .user-edit-area {
+    min-height: 60px;
+  }
+
+  .ai-correction-indicator {
+    top: -35px;
+    right: 8px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}

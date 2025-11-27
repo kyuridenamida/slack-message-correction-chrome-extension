@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Slack Message Correction",
+  "version": "1.0",
+  "description": "Slackメッセージ送信前の自動校正",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.anthropic.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["*://*.slack.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
